@@ -35,6 +35,7 @@ export class GamePanel{
     //map state
     public field1:number = 0;
     public myHouse:number = 1;
+    public inn:number = 2;
     public mapState:number = this.field1;
     public maps:string[] = [];
     public collisionDatas:number[][] = [];
@@ -74,6 +75,8 @@ export class GamePanel{
     public originalTilesize:number = 32;
     public scale:number = 2;
     public tilesize:number = this.originalTilesize*this.scale;
+
+    public showCoodinates:boolean = true;
 
    
     constructor(){

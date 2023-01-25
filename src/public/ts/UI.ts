@@ -45,6 +45,8 @@ export class UI{
         }
 
         
+
+        
     }
 
     drawMenu(c:CanvasRenderingContext2D){
@@ -212,4 +214,5 @@ export class UI{
         c.fillText(this.currentDialog, dialogX+50, dialogY+50);
     }
 
+    
 }

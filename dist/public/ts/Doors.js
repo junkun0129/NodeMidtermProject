@@ -1,18 +1,22 @@
 export class Doors {
-    constructor(gp, name, objectX, objectY, imageName, collision) {
+    constructor(gp, name, x, y, imageName, collision, from, to) {
         this.gp = gp;
         this.name = name;
-        this.objectX = objectX;
-        this.objectY = objectY;
+        this.x = x;
+        this.y = y;
         this.imageName = imageName;
         this.collision = collision;
+        this.from = from;
+        this.to = to;
     }
     draw(c) {
-        let image = new Image;
-        image.src = this.imageName;
-        let objectX = this.objectX - this.gp.player.playerX + 750;
-        let objectY = this.objectY - this.gp.player.playerY + 350;
-        c.drawImage(image, objectX, objectY, this.gp.tilesize, this.gp.tilesize);
+        if (this.gp.mapState === this.from) {
+            let image = new Image;
+            image.src = this.imageName;
+            let objectX = this.x - this.gp.player.playerX + 750;
+            let objectY = this.y - this.gp.player.playerY + 350;
+            c.drawImage(image, objectX, objectY, this.gp.tilesize, this.gp.tilesize);
+        }
     }
 }
 //# sourceMappingURL=Doors.js.map

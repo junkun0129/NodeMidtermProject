@@ -21,6 +21,7 @@ export class GamePanel {
         //map state
         this.field1 = 0;
         this.myHouse = 1;
+        this.inn = 2;
         this.mapState = this.field1;
         this.maps = [];
         this.collisionDatas = [];
@@ -47,6 +48,7 @@ export class GamePanel {
         this.originalTilesize = 32;
         this.scale = 2;
         this.tilesize = this.originalTilesize * this.scale;
+        this.showCoodinates = true;
         this.canvas = document.querySelector(".field1");
         this.canvas.width = this.screenWidth;
         this.canvas.height = this.screenHeight;

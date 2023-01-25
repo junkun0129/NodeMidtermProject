@@ -15,10 +15,10 @@ export class CollisionChecker {
                         this.gp.player.playerY <= collisionTileY + this.gp.tilesize + tile.worldY - 300 - 80) {
                         console.log("collision down!!!");
                         this.gp.collision = true;
-                        if (tile.collisionNum === this.gp.collisionM.doorIndex) {
-                            this.gp.mapState = this.gp.myHouse;
-                            this.gp.mapsChange = true;
-                        }
+                        // if(tile.collisionNum === this.gp.collisionM.doorIndex){
+                        //     this.gp.mapState = this.gp.myHouse;
+                        //     this.gp.mapsChange = true;
+                        // }
                     }
                     break;
                 }
@@ -29,10 +29,10 @@ export class CollisionChecker {
                         this.gp.player.playerY <= collisionTileY + this.gp.tilesize + tile.worldY - 300 - 80) {
                         console.log("collision right!!!");
                         this.gp.collision = true;
-                        if (tile.collisionNum === this.gp.collisionM.doorIndex) {
-                            this.gp.mapState = this.gp.myHouse;
-                            this.gp.mapsChange = true;
-                        }
+                        // if(tile.collisionNum === this.gp.collisionM.doorIndex){
+                        //     this.gp.mapState = this.gp.myHouse;
+                        //     this.gp.mapsChange = true;
+                        // }
                     }
                     break;
                 }
@@ -43,10 +43,10 @@ export class CollisionChecker {
                         this.gp.player.playerY <= collisionTileY + this.gp.tilesize + tile.worldY - 300 - 80) {
                         console.log("collision left!!!");
                         this.gp.collision = true;
-                        if (tile.collisionNum === this.gp.collisionM.doorIndex) {
-                            this.gp.mapState = this.gp.myHouse;
-                            this.gp.mapsChange = true;
-                        }
+                        // if(tile.collisionNum === this.gp.collisionM.doorIndex){
+                        //     this.gp.mapState = this.gp.myHouse;
+                        //     this.gp.mapsChange = true;
+                        // }
                     }
                     break;
                 }
@@ -57,11 +57,11 @@ export class CollisionChecker {
                         this.gp.player.playerY + 60 <= collisionTileY + this.gp.tilesize + tile.worldY - 300) {
                         console.log("collision up!!!");
                         this.gp.collision = true;
-                        if (tile.collisionNum === this.gp.collisionM.doorIndex) {
-                            this.gp.mapState = this.gp.myHouse;
-                            console.log("iatanislfkj");
-                            this.gp.mapsChange = true;
-                        }
+                        // if(tile.collisionNum === this.gp.collisionM.doorIndex){
+                        //     this.gp.mapState = this.gp.myHouse;
+                        //     console.log("iatanislfkj")
+                        //     this.gp.mapsChange = true;
+                        //}
                     }
                     break;
                 }
@@ -242,6 +242,62 @@ export class CollisionChecker {
             }
         }
         return index;
+    }
+    CheckCollisionDoors(direction) {
+        for (let i = 0; i < this.gp.doors.length; i++) {
+            if (this.gp.doors[i].from === this.gp.mapState) {
+                if (this.gp.doors[i] !== undefined) {
+                    let objectX = this.gp.doors[i].x - this.gp.player.playerX + 750;
+                    let objectY = this.gp.doors[i].y - this.gp.player.playerY + 350;
+                    switch (direction) {
+                        case "down": {
+                            if (this.gp.player.playerX + this.gp.tilesize >= objectX + this.gp.doors[i].x - 800 + 20 &&
+                                this.gp.player.playerX <= objectX + this.gp.tilesize + this.gp.doors[i].x - 700 - 20 &&
+                                this.gp.player.playerY + this.gp.tilesize >= objectY + this.gp.doors[i].y - 400 &&
+                                this.gp.player.playerY <= objectY + this.gp.tilesize + this.gp.doors[i].y - 300 - 20) {
+                                console.log("inn");
+                                this.gp.mapState = this.gp.doors[i].to;
+                                this.gp.mapsChange = true;
+                            }
+                            break;
+                        }
+                        case "right": {
+                            if (this.gp.player.playerX + this.gp.tilesize >= objectX + this.gp.doors[i].x - 800 &&
+                                this.gp.player.playerX <= objectX + this.gp.tilesize + this.gp.doors[i].x - 700 - 20 &&
+                                this.gp.player.playerY + this.gp.tilesize >= objectY + this.gp.doors[i].y - 400 + 20 &&
+                                this.gp.player.playerY <= objectY + this.gp.tilesize + this.gp.doors[i].y - 300 - 20) {
+                                console.log("inn");
+                                this.gp.mapState = this.gp.doors[i].to;
+                                this.gp.mapsChange = true;
+                            }
+                            break;
+                        }
+                        case "left": {
+                            if (this.gp.player.playerX + this.gp.tilesize >= objectX + this.gp.doors[i].x - 800 + 20 &&
+                                this.gp.player.playerX <= objectX + this.gp.tilesize + this.gp.doors[i].x - 700 &&
+                                this.gp.player.playerY + this.gp.tilesize >= objectY + this.gp.doors[i].y - 400 + 20 &&
+                                this.gp.player.playerY <= objectY + this.gp.tilesize + this.gp.doors[i].y - 300 - 20) {
+                                console.log("inn");
+                                this.gp.mapState = this.gp.doors[i].to;
+                                this.gp.mapsChange = true;
+                            }
+                            break;
+                        }
+                        case "up": {
+                            if (this.gp.player.playerX + this.gp.tilesize >= objectX + this.gp.doors[i].x - 800 + 20 &&
+                                this.gp.player.playerX <= objectX + this.gp.tilesize + this.gp.doors[i].x - 700 - 20 &&
+                                this.gp.player.playerY + this.gp.tilesize >= objectY + this.gp.doors[i].y - 400 + 20 &&
+                                this.gp.player.playerY <= objectY + this.gp.tilesize + this.gp.doors[i].y - 300) {
+                                console.log("inn");
+                                this.gp.mapState = this.gp.doors[i].to;
+                                this.gp.mapsChange = true;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
     CheckCollisionObject(direction) {
         let index = 999;

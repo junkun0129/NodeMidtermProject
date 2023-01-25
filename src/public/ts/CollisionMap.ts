@@ -54,9 +54,10 @@ export class CollisionMap{
             let collisionTileY:number = tile.worldY-this.gp.player.playerY+350;
             if(tile.collisionNum === this.collisionIndex){
                 c.fillStyle = "rgb(0,0,0,0)";
-            }else if(tile.collisionNum === this.doorIndex){
-                c.fillStyle = "rgb(200,200,200)";   
             }
+            // else if(tile.collisionNum === this.doorIndex){
+            //     c.fillStyle = "rgb(200,200,200)";   
+            // }
             c.fillRect(collisionTileX, collisionTileY, this.gp.tilesize, this.gp.tilesize);
             
         })

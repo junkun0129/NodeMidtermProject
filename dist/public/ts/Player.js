@@ -39,7 +39,6 @@ export class Player {
             this.gp.collision = false;
             //player to collision
             this.gp.collisionC.checkCollisionEntity(this.direction);
-            this.playerPosition();
             //intract with NPC
             let NPCbumped = this.gp.collisionC.CheckCollisionPlayerToEntity(this.direction);
             this.intaractNPC(NPCbumped);
@@ -47,12 +46,12 @@ export class Player {
             let deleteIndex = this.gp.collisionC.CheckCollisionObject(this.direction);
             if (deleteIndex !== 999) {
                 this.picableIf(deleteIndex);
-                //if it is door
-                // if(this.gp.asset.itemsOnMap[deleteIndex].name === "doors"){
-                //     this.gp.mapState = this.gp.myHouse;
-                //     this.gp.mapsChange = true;
-                // }
             }
+            //previous room
+            this.previousRoom = this.gp.mapState;
+            //intract with doors
+            this.gp.collisionC.CheckCollisionDoors(this.direction);
+            this.playerPosition();
             //player walking
             if (!this.gp.collision) {
                 switch (this.direction) {
@@ -89,6 +88,9 @@ export class Player {
                 }
                 this.spriteCounter = 0;
             }
+            //coodinates
+            console.log("this is x", this.playerX);
+            console.log("this is y", this.playerY);
         }
     }
     intaractNPC(i) {
@@ -122,15 +124,21 @@ export class Player {
     }
     playerPosition() {
         if (this.gp.mapsChange) {
-            switch (this.gp.gameState) {
-                case this.gp.field1:
-                    this.playerX = 2000;
-                    this.playerY = 2000;
-                    break;
-                case this.gp.myHouse:
-                    this.playerX = 3500;
-                    this.playerY = 2200;
-                    break;
+            if (this.gp.mapState !== this.gp.field1) {
+                //in room
+                const nowDoor = this.gp.doors.filter((door) => door.from === this.gp.mapState);
+                console.log(nowDoor[0]);
+                this.playerX = nowDoor[0].x;
+                this.playerY = nowDoor[0].y - 50;
+            }
+            else {
+                //go field out of room
+                const doorsInFirld = this.gp.doors.filter((door) => door.from === this.gp.mapState);
+                console.log(doorsInFirld, "doorinfirld");
+                const rightDoor = doorsInFirld.filter((door) => door.to === this.previousRoom);
+                console.log(rightDoor, "this is right");
+                this.playerX = rightDoor[0].x;
+                this.playerY = rightDoor[0].y + 50;
             }
         }
     }

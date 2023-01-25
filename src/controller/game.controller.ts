@@ -1,3 +1,4 @@
+const User = require("../model/user.model")
 
 
 exports.getGameScreen = (req, res, next)=>{
@@ -9,15 +10,31 @@ exports.getTitleScreen = (req, res, next)=>{
 }
 
 exports.getCreateScreen = (req, res, next)=>{
-    res.render("create");
+    res.render("create", {sign: ""});
 }
 
 exports.postCreateScreen = (req, res, next)=>{
-    let data = [{email:"jumpei", password:"jum", username:"jum"}];
+   
     const {email, password, username} = req.body;
-    data.push(req.body);
-    console.log(data);
-    res.redirect("/game"); 
+    const newUser = new User(email, password, username);
+
+    newUser.find()
+    .then((data)=>{
+        
+        res.render("create", {sign:`this account ${data[0][0].Email} exists`})
+
+    }).catch(()=>{
+        newUser.create()
+        .then((data)=>{
+            console.log(data)
+            return res.redirect("/game"); 
+        })
+        .catch((err)=>{
+            console.log("fail to create account")
+        });
+    })
+
+    
 }
 
 exports.getLoginScreen = (req, res, next)=>{

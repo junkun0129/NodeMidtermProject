@@ -1,14 +1,14 @@
 const mysql = require("mysql2");
 
 const pool = mysql.createPool({
-    host: "containers-us-west-143.railway.app",
-    user: "root", 
-    password: "4yXElxZ416ltqRMMcB9t", 
-    database: "railway", 
-    port: 6288
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASS,
+  database: process.env.MYSQL_DBNAME,
+  port: process.env.MYSQL_PORT
 });
 
-const sql = `SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='railway' AND TABLE_NAME='Users'`
+const sql = `SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='railway' AND TABLE_NAME='Users7'`
 
 pool.query(sql, (err, data)=>{
     if(err){
@@ -16,7 +16,7 @@ pool.query(sql, (err, data)=>{
     }
     
     if(data.length === 0){
-        console.log("Table 'User' does not exist");
+        console.log(`Table 'User' does not exist`);
         seedDB();
     }else{
         console.log("Table 'User' exists")
@@ -24,14 +24,15 @@ pool.query(sql, (err, data)=>{
 })
 
 const seedDB = ()=>{
-    pool.query("DROP TABLE IF EXISTS Users");
+    pool.query("DROP TABLE IF EXISTS Users7");
 
     pool.query(
-        `CREATE TABLE Users (
+        `CREATE TABLE Users7 (
             User_ID INT PRIMARY KEY AUTO_INCREMENT,
-            Email VARCHAR(100) NOT NULL, 
-            Password VARCHAR(100) NOT NULL, 
-            Username VARHAR(100) NOT NULL,
+            Email VARCHAR(100) NOT NULL,
+            Password VARCHAR(100) NOT NULL,
+            Username VARCHAR(100) NOT NULL,
+            LoginStatus BIT
         )`,
         (err)=>{
             if(err){
@@ -39,12 +40,12 @@ const seedDB = ()=>{
             }
             console.log("Successful creation of the 'Users' table");
         }
-    )
+    );
 
     pool.query(
         `
-            INSERT INTO Users (User_ID, Email, Password, Username) VALUES
-            (1, "penpenetai@icloud.com", "santaclaus", "jumchan")`,
+            INSERT INTO Users7 (User_ID, Email, Password, Username, LoginStatus) VALUES
+            (1, 'penpenetai@icloud.com', 'santaclaus', 'jumchan', 0);`,
         (err) =>{
             if(err){
                 return console.error(err.message);
