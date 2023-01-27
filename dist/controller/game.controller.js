@@ -49,6 +49,7 @@ exports.postLoginScreen = (req, res, next) => {
         if (data[0][0].Password === password) {
             // localStorage.setItem("UserEmail", "jum")
             req.session.useraccount = data[0][0].Email;
+            req.session.username = data[0][0].Username;
             req.session.authorized = true;
             console.log(data[0][0].Email);
             res.cookie("currentAccount", data[0][0]);
@@ -68,5 +69,14 @@ exports.getBookScreen = (req, res, next) => {
         console.error(err.message);
     });
     // res.render("book");
+};
+exports.postBookScreen = (req, res, next) => {
+    const { Title, Text } = req.body;
+    const newBook = new Book(req.session.username, Title, Text);
+    newBook.save()
+        .then((data) => {
+        console.log(data[0]);
+        res.redirect("book");
+    }).catch((err) => console.error(err.message));
 };
 //# sourceMappingURL=game.controller.js.map

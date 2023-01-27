@@ -14,7 +14,7 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 // import { getGameScreen } from "./controller/game.controller";
-const { getGameScreen, getTitleScreen, getCreateScreen, postCreateScreen, getLoginScreen, postLoginScreen, getBookScreen } = require("./controller/game.controller");
+const { getGameScreen, getTitleScreen, getCreateScreen, postCreateScreen, getLoginScreen, postLoginScreen, getBookScreen, postBookScreen } = require("./controller/game.controller");
 const dbConnection = require("./util/mysql");
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
@@ -38,6 +38,7 @@ app.post("/create", postCreateScreen);
 app.get("/login", getLoginScreen);
 app.post("/login", postLoginScreen);
 app.get("/book", getBookScreen);
+app.post("/book", postBookScreen);
 const port = 9000;
 app.listen(port, () => __awaiter(this, void 0, void 0, function* () {
     const [data] = yield dbConnection.query("SELECT 5");

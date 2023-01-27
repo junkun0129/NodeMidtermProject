@@ -19,17 +19,17 @@ pool.query(sql, (err, data) => {
         console.log("Table 'User' exists");
     }
 });
-const sql2 = `SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='railway' AND TABLE_NAME='ReportBook6'`;
+const sql2 = `SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='railway' AND TABLE_NAME='ReportBook7'`;
 pool.query(sql2, (err, data) => {
     if (err) {
         return console.error(err.message);
     }
     if (data.length === 0) {
-        console.log(`Table 'ReportBook6' does not exist`);
+        console.log(`Table 'ReportBook7' does not exist`);
         seedDBforBook();
     }
     else {
-        console.log("table 'ReportBook6' exists");
+        console.log("table 'ReportBook7' exists");
     }
 });
 const seedDB = () => {
@@ -56,17 +56,18 @@ const seedDB = () => {
     });
 };
 const seedDBforBook = () => {
-    pool.query("DROP TABLE IF EXISTS ReportBook6");
-    pool.query(`CREATE TABLE ReportBook6 (
+    pool.query("DROP TABLE IF EXISTS ReportBook7");
+    pool.query(`CREATE TABLE ReportBook7 (
             Report_ID INT PRIMARY KEY AUTO_INCREMENT,
             Date VARCHAR(100) NOT NULL,
             Username VARCHAR(100) NOT NULL,
+            Title VARCHAR(100) NOT NULL,
             Text VARCHAR(100) NOT NULL
         )`, (err) => {
         if (err) {
             return console.error("you count insert data");
         }
-        console.log("Successful creation of the 'ReportBook6' table");
+        console.log("Successful creation of the 'ReportBook7' table");
     });
 };
 module.exports = pool.promise();

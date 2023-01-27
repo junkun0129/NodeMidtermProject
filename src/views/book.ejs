@@ -12,7 +12,7 @@
 <body>
     <!-- Go back to game -->
     <div class="arrow">←</div>
-    <div class = "pen">pen</div>
+    <!-- <div class = "pen">pen</div> -->
 
 
 
@@ -20,7 +20,7 @@
     <div class="a-book">
 
         <div id="book" class="book">
-            <!-- Paper 1 -->
+            
             <div class="fake-book">
                 <div id="p1" class="paper">
                     <div class="front hyoushi">
@@ -33,20 +33,45 @@
                         <div id="b1" class="back-content">
                             <h1><%= reports[0].Date %></h1><br>
                             <h1><%= reports[0].Username %></h1><br>
+                            <h1><%= reports[0].Title %> </h1>
                             <h1><%= reports[0].Text %> </h1><br>
                         </div>
                     </div>
                 </div>
-                <!-- Paper 2 -->
+                
                 <div id="p2" class="paper">
                     <div class="front">
                         <div id="f2" class="front-content">
-                            <h1>Front 2</h1>
+                            <% if(reports.length >= 2){ %> 
+                                <h1><%= reports[1].Date %></h1><br>
+                                <h1><%= reports[1].Username %></h1><br>
+                                <h1><%= reports[1].Title %> </h1>
+                                <h1><%= reports[1].Text %> </h1><br>
+                             <% }else{ %>    
+                                <form action="/book" method="post">
+                                    <input type="text" name="Title" placeholder="type title">
+                                    <input type="text" name="Text" placeholder="type report">
+
+                                    <button>wite down</button>
+                                </form>
+                            <% } %> 
                         </div>
                     </div>
                     <div class="back">
                         <div id="b2" class="back-content">
-                            <h1>Back 2</h1>
+                            <% if(reports.length >= 3){ %> 
+                                <h1><%= reports[2].Date %></h1><br>
+                                <h1><%= reports[2].Username %></h1><br>
+                                <h1><%= reports[2].Title %> </h1>
+                                <h1><%= reports[2].Text %> </h1><br>
+                             <% }else{ %>    
+                                <form action="/book" method="post">
+                                    <input type="text" name="Title" placeholder="type title">
+                                    <input type="text" name="Text" placeholder="type report">
+
+                                    <button>wite down</button>
+                                </form>
+                            <% } %> 
                         </div>
                     </div>
                 </div>
@@ -54,48 +79,144 @@
                 <div id="p3" class="paper">
                     <div class="front">
                         <div id="f3" class="front-content">
-                            <h1>Front 3</h1>
+                            <% if(reports.length >= 4){ %> 
+                                <h1><%= reports[3].Date %></h1><br>
+                                <h1><%= reports[3].Username %></h1><br>
+                                <h1><%= reports[3].Title %> </h1>
+                                <h1><%= reports[3].Text %> </h1><br>
+                             <% }else{ %>    
+                                <form action="/book" method="post">
+                                    <input type="text" name="Title" placeholder="type title">
+                                    <input type="text" name="Text" placeholder="type report">
+
+                                    <button>wite down</button>
+                                </form>
+                            <% } %> 
                         </div>
                     </div>
                     <div class="back">
                         <div id="b3" class="back-content">
-                            <h1>Back 3</h1>
+                            <% if(reports.length >= 5){ %> 
+                                <h1><%= reports[4].Date %></h1><br>
+                                <h1><%= reports[4].Username %></h1><br>
+                                <h1><%= reports[4].Title %> </h1>
+                                <h1><%= reports[4].Text %> </h1><br>
+                             <% }else{ %>    
+                                <form action="/book" method="post">
+                                    <input type="text" name="Title" placeholder="type title">
+                                    <input type="text" name="Text" placeholder="type report">
+
+                                    <button>wite down</button>
+                                </form>
+                            <% } %> 
                         </div>
                     </div>
                 </div>
                 <div id="p4" class="paper">
                     <div class="front">
                         <div id="f4" class="front-content">
-                            <h1>Front 4</h1>
+                            <% if(reports.length >= 6){ %> 
+                                <h1><%= reports[5].Date %></h1><br>
+                                <h1><%= reports[5].Username %></h1><br>
+                                <h1><%= reports[5].Title %> </h1>
+                                <h1><%= reports[5].Text %> </h1><br>
+                             <% }else{ %>    
+                                <form action="/book" method="post">
+                                    <input type="text" name="Title" placeholder="type title">
+                                    <input type="text" name="Text" placeholder="type report">
+
+                                    <button>wite down</button>
+                                </form>
+                            <% } %> 
                         </div>
                     </div>
                     <div class="back">
                         <div id="b4" class="back-content">
-                            <h1>Back 4</h1>
+                            <% if(reports.length >= 7){ %> 
+                                <h1><%= reports[6].Date %></h1><br>
+                                <h1><%= reports[6].Username %></h1><br>
+                                <h1><%= reports[6].Title %> </h1>
+                                <h1><%= reports[6].Text %> </h1><br>
+                             <% }else{ %>    
+                                <form action="/book" method="post">
+                                    <input type="text" name="Title" placeholder="type title">
+                                    <input type="text" name="Text" placeholder="type report">
+
+                                    <button>wite down</button>
+                                </form>
+                            <% } %> 
                         </div>
                     </div>
                 </div>
                 <div id="p5" class="paper">
                     <div class="front">
                         <div id="f5" class="front-content">
-                            <h1>Front 5</h1>
+                            <% if(reports.length >= 8){ %> 
+                                <h1><%= reports[7].Date %></h1><br>
+                                <h1><%= reports[7].Username %></h1><br>
+                                <h1><%= reports[7].Title %> </h1>
+                                <h1><%= reports[7].Text %> </h1><br>
+                             <% }else{ %>    
+                                <form action="/book" method="post">
+                                    <input type="text" name="Title" placeholder="type title">
+                                    <input type="text" name="Text" placeholder="type report">
+
+                                    <button>wite down</button>
+                                </form>
+                            <% } %> 
                         </div>
                     </div>
                     <div class="back">
                         <div id="b5" class="back-content">
-                            <h1>Back 5</h1>
+                            <% if(reports.length >= 9){ %> 
+                                <h1><%= reports[8].Date %></h1><br>
+                                <h1><%= reports[8].Username %></h1><br>
+                                <h1><%= reports[8].Title %> </h1>
+                                <h1><%= reports[8].Text %> </h1><br>
+                             <% }else{ %>    
+                                <form action="/book" method="post">
+                                    <input type="text" name="Title" placeholder="type title">
+                                    <input type="text" name="Text" placeholder="type report">
+
+                                    <button>wite down</button>
+                                </form>
+                            <% } %> 
                         </div>
                     </div>
                 </div>
                 <div id="p6" class="paper">
                     <div class="front">
                         <div id="f6" class="front-content">
-                            <h1>Front 6</h1>
+                            <% if(reports.length >= 10){ %> 
+                                <h1><%= reports[9].Date %></h1><br>
+                                <h1><%= reports[9].Username %></h1><br>
+                                <h1><%= reports[9].Title %> </h1>
+                                <h1><%= reports[9].Text %> </h1><br>
+                             <% }else{ %>    
+                                <form action="/book" method="post">
+                                    <input type="text" name="Title" placeholder="type title">
+                                    <input type="text" name="Text" placeholder="type report">
+
+                                    <button>wite down</button>
+                                </form>
+                            <% } %> 
                         </div>
                     </div>
                     <div class="back">
                         <div id="b6" class="back-content">
-                            <h1>Back 6</h1>
+                            <% if(reports.length >= 11){ %> 
+                                <h1><%= reports[10].Date %></h1><br>
+                                <h1><%= reports[10].Username %></h1><br>
+                                <h1><%= reports[10].Title %> </h1>
+                                <h1><%= reports[10].Text %> </h1><br>
+                             <% }else{ %>    
+                                <form action="/book" method="post">
+                                    <input type="text" name="Title" placeholder="type title">
+                                    <input type="text" name="Text" placeholder="type report">
+
+                                    <button>wite down</button>
+                                </form>
+                            <% } %> 
                         </div>
                     </div>
                 </div>
@@ -187,6 +308,8 @@
 
 
     <script>
+
+
         // References to DOM Elements
 // const prevBtn = document.querySelector("#prev-btn");
 // const nextBtn = document.querySelector("#next-btn");
