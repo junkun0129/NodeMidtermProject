@@ -389,6 +389,69 @@ export class CollisionChecker{
         
 
     }
+    CheckCollisionBooks(direction:string):void{
+        
+
+        for(let i:number = 0; i<this.gp.books.length; i++){
+            if(this.gp.books[i].mapstate === this.gp.mapState){
+
+                if(this.gp.books[i] !== undefined){
+                
+                let objectX = this.gp.books[i].x-this.gp.player.playerX+750;
+                let objectY = this.gp.books[i].y-this.gp.player.playerY+350;
+
+                switch(direction){
+                    case "down":{
+                        if( this.gp.player.playerX+this.gp.tilesize >= objectX+this.gp.books[i].x-800+20&&
+                            this.gp.player.playerX <= objectX+this.gp.tilesize+this.gp.books[i].x-700-20&&
+                            this.gp.player.playerY+this.gp.tilesize >= objectY+this.gp.books[i].y-400&&
+                            this.gp.player.playerY <= objectY+this.gp.tilesize+this.gp.books[i].y-300-20){
+                                console.log("books!!!!!!")
+                                window.location.href = "/book";
+                            }
+                            break;
+                    }
+                    
+                    case "right":{
+                        if( this.gp.player.playerX+this.gp.tilesize >= objectX+this.gp.books[i].x-800&&
+                            this.gp.player.playerX <= objectX+this.gp.tilesize+this.gp.books[i].x-700-20&&
+                            this.gp.player.playerY+this.gp.tilesize >= objectY+this.gp.books[i].y-400+20&&
+                            this.gp.player.playerY <= objectY+this.gp.tilesize+this.gp.books[i].y-300-20){
+                                console.log("books!!!!!!")
+                                window.location.href = "/book";
+                            }
+                            break;
+                    }
+                    case "left":{
+                        if( this.gp.player.playerX+this.gp.tilesize >= objectX+this.gp.books[i].x-800+20&&
+                            this.gp.player.playerX <= objectX+this.gp.tilesize+this.gp.books[i].x-700&&
+                            this.gp.player.playerY+this.gp.tilesize >= objectY+this.gp.books[i].y-400+20&&
+                            this.gp.player.playerY <= objectY+this.gp.tilesize+this.gp.books[i].y-300-20){
+                                console.log("books!!!!!!")
+                                window.location.href = "/book";
+                            }
+                            break;
+                    }
+    
+                    case "up":{
+                        if( this.gp.player.playerX+this.gp.tilesize >= objectX+this.gp.books[i].x-800+20&&
+                            this.gp.player.playerX <= objectX+this.gp.tilesize+this.gp.books[i].x-700-20&&
+                            this.gp.player.playerY+this.gp.tilesize >= objectY+this.gp.books[i].y-400+20&&
+                            this.gp.player.playerY <= objectY+this.gp.tilesize+this.gp.books[i].y-300){
+                                console.log("books!!!!!!")
+                                window.location.href = "/book";
+                                
+                            }
+                            break;
+                    }
+                }
+
+            }
+            }
+        }
+        
+
+    }
     CheckCollisionObject(direction:string):number{
         let index:number = 999;
 

@@ -16,7 +16,7 @@ export class Entity {
         this.picture = "pictureURL";
         this.spriteCounter = 0;
         this.spriteNum = 1;
-        this.dialogs = [];
+        this.dialogs = ["a", "i", "u", "e", "o"];
         this.dialogIndex = 0;
         this.field = 0;
         this.gp = gp;

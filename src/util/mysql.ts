@@ -8,7 +8,7 @@ const pool = mysql.createPool({
   port: process.env.MYSQL_PORT
 });
 
-const sql = `SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='railway' AND TABLE_NAME='Users7'`
+const sql = `SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='railway' AND TABLE_NAME='Users8'`
 
 pool.query(sql, (err, data)=>{
     if(err){
@@ -23,16 +23,30 @@ pool.query(sql, (err, data)=>{
     }
 })
 
+const sql2 = `SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='railway' AND TABLE_NAME='ReportBook6'`
+pool.query(sql2, (err, data)=>{
+    if(err){
+        return console.error(err.message);
+    }
+
+    if(data.length === 0){
+        console.log(`Table 'ReportBook6' does not exist`);
+        seedDBforBook();
+    }else{
+        console.log("table 'ReportBook6' exists")
+    }
+})
+
 const seedDB = ()=>{
-    pool.query("DROP TABLE IF EXISTS Users7");
+    pool.query("DROP TABLE IF EXISTS Users8");
 
     pool.query(
-        `CREATE TABLE Users7 (
+        `CREATE TABLE Users8 (
             User_ID INT PRIMARY KEY AUTO_INCREMENT,
             Email VARCHAR(100) NOT NULL,
             Password VARCHAR(100) NOT NULL,
             Username VARCHAR(100) NOT NULL,
-            LoginStatus BIT
+            LoginStatus BOOLEAN
         )`,
         (err)=>{
             if(err){
@@ -44,15 +58,35 @@ const seedDB = ()=>{
 
     pool.query(
         `
-            INSERT INTO Users7 (User_ID, Email, Password, Username, LoginStatus) VALUES
-            (1, 'penpenetai@icloud.com', 'santaclaus', 'jumchan', 0);`,
+            INSERT INTO Users8 (User_ID, Email, Password, Username, LoginStatus) VALUES
+            (1, 'penpenetai@icloud.com', 'santaclaus', 'jumchan', true);`,
         (err) =>{
             if(err){
-                return console.error(err.message);
+                return console.error("you couldnt insert value");
             }
             console.log("Successful creation of 1 user");
         }
     );
 };
+
+const seedDBforBook=()=>{
+    pool.query("DROP TABLE IF EXISTS ReportBook6");
+
+    pool.query(
+        `CREATE TABLE ReportBook6 (
+            Report_ID INT PRIMARY KEY AUTO_INCREMENT,
+            Date VARCHAR(100) NOT NULL,
+            Username VARCHAR(100) NOT NULL,
+            Text VARCHAR(100) NOT NULL
+        )`,
+        (err)=>{
+            if(err){
+                return console.error("you count insert data");
+            }
+            console.log("Successful creation of the 'ReportBook6' table");
+        }
+    );
+   
+}
 
 module.exports = pool.promise();

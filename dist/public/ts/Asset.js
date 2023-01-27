@@ -1,6 +1,8 @@
 import { Npc } from "./npc/Npc.js";
 import { Doors } from "./Doors.js";
 import { Sounds } from "./Sounds.js";
+import { Book } from "./Book.js";
+import { TotoDialog1 } from "./npc/NpcAssets.js";
 export class Asset {
     constructor(gp) {
         this.boolean = true;
@@ -20,6 +22,7 @@ export class Asset {
             localStorage.setItem("itemOnMap", JSON.stringify(this.itemsOnMap));
             this.gp.gameStartOver = false;
         }
+        this.gp.books[0] = new Book(this.gp, "/img/black.png", 2160, 1270, this.gp.inn);
     }
     setDoor() {
         //house
@@ -34,6 +37,8 @@ export class Asset {
         this.gp.npc[0].npcX = 3000;
         this.gp.npc[0].npcY = 1800;
         this.gp.npc[0].picture = "/img/npc.png";
+        this.gp.npc[0].dialogs = TotoDialog1;
+        this.gp.npc[0].field = this.gp.field1;
     }
     setSounds() {
         this.gp.sound[0] = new Sounds(this.gp, "/audio/select.mp3");

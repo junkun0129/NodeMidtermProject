@@ -11,6 +11,8 @@ import { LSManager } from "./LSManager.js";
 import { Npc } from "./npc/Npc.js";
 import { Entity } from "./npc/Entity.js";
 import { Sounds } from "./Sounds.js";
+import { Book } from "./Book.js";
+
 
 
 
@@ -57,8 +59,9 @@ export class GamePanel{
     
 
 
-
-    
+    public User:string = "";
+    public books:Book[] = []; 
+    public booksCollision:boolean = false;
 
    
 
@@ -104,7 +107,19 @@ export class GamePanel{
         this.asset.setCollisions();
         this.asset.setDoor();
         //console.log(this.collisionDatas[0]+"iwatanidaze")
-       
+       const iwatani = document.cookie
+       if(iwatani){
+        // let currentUser = document.cookie.split(" ")[1].split("=")[1]
+        // let decodedCurrentUser = decodeURIComponent(currentUser)
+        // this.User = decodedCurrentUser;
+        // console.log(decodedCurrentUser, ":this is current user")
+        //let UserJson = decodeURIComponent(document.cookie).split(" ")[1].split("=")[1].split("j:")[1];
+        let User = JSON.parse(decodeURIComponent(document.cookie).split("j:")[1]);
+        console.log(User.Username)
+        
+       }else{
+        console.log("jjjjjjj")
+       }
         this.gameloop();
 
 
@@ -213,6 +228,10 @@ export class GamePanel{
                 this.doors[i].draw(this.c);
             }
         }
+        if(this.books[0] !== undefined){
+
+            this.books[0].draw(this.c);
+        }
 
         this.asset.draw(this.c);
 
@@ -225,6 +244,8 @@ export class GamePanel{
 
     }
 }
+
+
 
 //start game
 function start():void{

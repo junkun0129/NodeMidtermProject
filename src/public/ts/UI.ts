@@ -45,7 +45,10 @@ export class UI{
         }
 
         
-
+        //this.drawName(c)
+        if(this.gp.booksCollision){
+            this.drawDialog(c);
+        }
         
     }
 
@@ -212,6 +215,18 @@ export class UI{
         c.fillStyle = "white"
         c.font = "30px monospace";
         c.fillText(this.currentDialog, dialogX+50, dialogY+50);
+    }
+
+    drawName(c:CanvasRenderingContext2D){
+        c.fillStyle = "red"
+        c.font = "100px monospace";
+        c.fillText(this.gp.User, 100,100)
+    }
+
+    drawBookMakeSure(c:CanvasRenderingContext2D){
+        c.fillStyle = "white"
+        c.font = "100px monospace";
+        c.fillText("iwataniiiiiiii",100,100);
     }
 
     

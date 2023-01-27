@@ -67,6 +67,9 @@ export class Player{
                 this.picableIf(deleteIndex);
             }
 
+            //books
+            this.gp.collisionC.CheckCollisionBooks(this.direction)
+
             //previous room
             this.previousRoom = this.gp.mapState;
 

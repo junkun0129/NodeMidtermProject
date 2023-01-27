@@ -8,9 +8,16 @@
 </head>
 <body>
     <h1>login</h1>
-    <form action="">
-        <input type="text">
-        <button>s</button>
+    <h1><%= letter %> </h1>
+    <form action="/login" method = "post">
+        <input name="email" class="input" type="text">
+        <label for="">email</label><br>
+        <input name="password" class="input2" type="text">
+        <label for="">password</label><br>
+       
+        <button class="button" type="button">submit</button>
     </form>
+    
+    <script src="/login/login.js"></script>
 </body>
 </html>

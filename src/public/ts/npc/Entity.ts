@@ -19,7 +19,7 @@ export class Entity{
     picture:string = "pictureURL";
     spriteCounter:number = 0;
     spriteNum:number = 1;
-    dialogs:string[] = [];
+    dialogs:string[] = ["a", "i", "u", "e", "o"];
     dialogIndex:number = 0;
 
     field:number = 0;

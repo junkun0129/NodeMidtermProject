@@ -3,6 +3,8 @@ import { Npc } from "./npc/Npc.js";
 import { Doors } from "./Doors.js";
 import { Player } from "./Player.js";
 import { Sounds } from "./Sounds.js";
+import { Book } from "./Book.js";
+import { TotoDialog1, TotoDialog2 } from "./npc/NpcAssets.js";
 
 
 export class Asset{
@@ -37,7 +39,7 @@ export class Asset{
             this.gp.gameStartOver = false;
         }
         
-        
+        this.gp.books[0] = new Book(this.gp, "/img/black.png", 2160, 1270, this.gp.inn)
       
     }
 
@@ -56,6 +58,8 @@ export class Asset{
         this.gp.npc[0].npcX = 3000;
         this.gp.npc[0].npcY = 1800;
         this.gp.npc[0].picture = "/img/npc.png";
+        this.gp.npc[0].dialogs = TotoDialog1;
+        this.gp.npc[0].field = this.gp.field1;
         
     }
 

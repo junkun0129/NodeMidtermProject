@@ -29,6 +29,10 @@ export class UI {
         if (this.gp.gameState === this.gp.talkingScene) {
             this.drawDialog(c);
         }
+        //this.drawName(c)
+        if (this.gp.booksCollision) {
+            this.drawDialog(c);
+        }
     }
     drawMenu(c) {
         const menuX = 1150;
@@ -156,6 +160,16 @@ export class UI {
         c.fillStyle = "white";
         c.font = "30px monospace";
         c.fillText(this.currentDialog, dialogX + 50, dialogY + 50);
+    }
+    drawName(c) {
+        c.fillStyle = "red";
+        c.font = "100px monospace";
+        c.fillText(this.gp.User, 100, 100);
+    }
+    drawBookMakeSure(c) {
+        c.fillStyle = "white";
+        c.font = "100px monospace";
+        c.fillText("iwataniiiiiiii", 100, 100);
     }
 }
 //# sourceMappingURL=UI.js.map

@@ -47,6 +47,8 @@ export class Player {
             if (deleteIndex !== 999) {
                 this.picableIf(deleteIndex);
             }
+            //books
+            this.gp.collisionC.CheckCollisionBooks(this.direction);
             //previous room
             this.previousRoom = this.gp.mapState;
             //intract with doors

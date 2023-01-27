@@ -38,6 +38,9 @@ export class GamePanel {
         this.asset = new Asset(this);
         this.strageM = new LSManager();
         this.sound = [];
+        this.User = "";
+        this.books = [];
+        this.booksCollision = false;
         this.collision = false;
         this.collisionNPC = false;
         //public collisionArray:CollisionTile[] = this.collisionM.mapArrayCreate(); 
@@ -66,6 +69,19 @@ export class GamePanel {
         this.asset.setCollisions();
         this.asset.setDoor();
         //console.log(this.collisionDatas[0]+"iwatanidaze")
+        const iwatani = document.cookie;
+        if (iwatani) {
+            // let currentUser = document.cookie.split(" ")[1].split("=")[1]
+            // let decodedCurrentUser = decodeURIComponent(currentUser)
+            // this.User = decodedCurrentUser;
+            // console.log(decodedCurrentUser, ":this is current user")
+            //let UserJson = decodeURIComponent(document.cookie).split(" ")[1].split("=")[1].split("j:")[1];
+            let User = JSON.parse(decodeURIComponent(document.cookie).split("j:")[1]);
+            console.log(User.Username);
+        }
+        else {
+            console.log("jjjjjjj");
+        }
         this.gameloop();
     }
     gameloop() {
@@ -129,6 +145,9 @@ export class GamePanel {
             if (this.doors[i] !== undefined) {
                 this.doors[i].draw(this.c);
             }
+        }
+        if (this.books[0] !== undefined) {
+            this.books[0].draw(this.c);
         }
         this.asset.draw(this.c);
         this.ui.draw(this.c);
