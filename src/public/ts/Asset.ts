@@ -4,7 +4,7 @@ import { Doors } from "./Doors.js";
 import { Player } from "./Player.js";
 import { Sounds } from "./Sounds.js";
 import { Book } from "./Book.js";
-import { TotoDialog1, TotoDialog2 } from "./npc/NpcAssets.js";
+import { TotoDialog1, TotoDialog2, AccomodationGirl } from "./npc/NpcAssets.js";
 
 
 export class Asset{
@@ -39,7 +39,11 @@ export class Asset{
             this.gp.gameStartOver = false;
         }
         
-        this.gp.books[0] = new Book(this.gp, "/img/black.png", 2160, 1270, this.gp.inn)
+        this.gp.books[0] = new Book(this.gp, "/img/reportbook.png", 2160, 1270, this.gp.inn)
+        this.gp.books[0].jumpable = true;
+        this.gp.books[1] = new Book(this.gp, "/img/accomodationbook.png", 2260, 1270, this.gp.inn)
+        this.gp.books[1].speakable = true;
+        this.gp.books[1].dialogs = AccomodationGirl;
       
     }
 

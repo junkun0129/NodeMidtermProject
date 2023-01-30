@@ -44,12 +44,12 @@ export class UI{
             this.drawDialog(c);
         }
 
-        
-        //this.drawName(c)
-        if(this.gp.booksCollision){
+        if(this.gp.gameState === this.gp.objectTalkingScene){
             this.drawDialog(c);
         }
-        
+
+
+        this.drawName(c);
     }
 
     drawMenu(c:CanvasRenderingContext2D){
@@ -218,9 +218,9 @@ export class UI{
     }
 
     drawName(c:CanvasRenderingContext2D){
-        c.fillStyle = "red"
+        c.fillStyle = "black"
         c.font = "100px monospace";
-        c.fillText(this.gp.User, 100,100)
+        c.fillText("Username: "+this.gp.User.Username, 100,100)
     }
 
     drawBookMakeSure(c:CanvasRenderingContext2D){

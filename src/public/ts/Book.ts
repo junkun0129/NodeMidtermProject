@@ -6,6 +6,15 @@ export class Book{
     y:number;
     mapstate:number;
 
+    public jumpable:boolean = false;
+    public speakable:boolean = false;
+
+    public dialogs:string[] = ["a", "k", "k", "d"];
+    public dialogIndex:number = 0;
+    
+
+
+
     constructor(gp:GamePanel, imageName:string, x:number, y:number, mapstate:number){
 
         this.gp = gp;
@@ -13,6 +22,18 @@ export class Book{
         this.x = x;
         this.y = y;
         this.mapstate = mapstate;
+        
+    }
+
+    speak():void{
+        const maxDialogIndex = this.dialogs.length;
+
+        if(this.dialogIndex === maxDialogIndex){
+            this.gp.gameState = this.gp.fieldScene;
+            this.dialogIndex =0;
+        }
+        this.gp.ui.currentDialog = this.dialogs[this.dialogIndex];
+    
     }
     
     

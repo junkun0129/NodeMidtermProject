@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/b0f29e9bfe.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    
     <!-- Go back to game -->
     <div class="arrow">←</div>
     <!-- <div class = "pen">pen</div> -->
@@ -29,12 +30,77 @@
                             <p class="jumon">ਟੈਕਸਟ ਅਤੇ ਦਸਤਾਵੇਜ਼ ਫਾਈਲਾਂ ਦਾ ਤੁਰੰਤ ਅਨੁਵਾਦ ਕਰੋ। ਭਾਵੇਂ ਤੁਸੀਂ ਇੱਕ ਵਿਅਕਤੀ ਹੋ ਜਾਂ ਇੱਕ ਟੀਮ, ਤੁਸੀਂ ਬਹੁਤ ਸਟੀਕ ਅਨੁਵਾਦਾਂ ਤੋਂ ਲਾਭ ਲੈ ਸਕਦੇ ਹੋ। ਲੱਖਾਂ ਲੋਕ ਹਰ ਰੋਜ਼ ਅਨੁਵਾਦ ਕਰਨ ਲਈ DeepL ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹਨ।ਟੈਕਸਟ ਅਤੇ ਦਸਤਾਵੇਜ਼ ਫਾਈਲਾਂ ਦਾ ਤੁਰੰਤ ਅਨੁਵਾਦ ਕਰੋ। ਭਾਵੇਂ ਤੁਸੀਂ ਇੱਕ ਵਿਅਕਤੀ ਹੋ ਜਾਂ ਇੱਕ ਟੀਮ, ਤੁਸੀਂ ਬਹੁਤ ਸਟੀਕ ਅਨੁਵਾਦਾਂ ਤੋਂ ਲਾਭ ਲੈ ਸਕਦੇ ਹੋ। ਲੱਖਾਂ ਲੋਕ ਹਰ ਰੋਜ਼ ਅਨੁਵਾਦ ਕਰਨ ਟੈਕਸਟ ਅਤੇ ਦਸਤਾਵੇਜ਼ ਫਾਈਲਾਂ ਦਾ ਤੁਰੰਤ ਅਨੁਵਾਦ ਕਰੋ। ਭਾਵੇਂ ਤੁਸੀਂ ਇੱਕ ਵਿਅਕਤੀ ਹੋ ਜਾਂ ਇੱਕ ਟੀਮ, ਤੁਸੀਂ ਬਹੁਤ ਸਟੀਕ ਅਨੁਵਾਦਾਂ ਤੋਂ ਲਾਭ ਲੈ ਸਕਦੇ ਹੋ। ਲੱਖਾਂ ਲੋਕ ਹਰ ਰੋਜ਼ ਅਨੁਵਾਦ ਕਰਨ ਲਈ DeepL ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹਨ।ਲਈ DeepL ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹਨ।</p>
                         </div>
                     </div>
+                     
+                    
                     <div class="back">
                         <div id="b1" class="back-content">
-                            <h1><%= reports[0].Date %></h1><br>
-                            <h1><%= reports[0].Username %></h1><br>
-                            <h1><%= reports[0].Title %> </h1>
-                            <h1><%= reports[0].Text %> </h1><br>
+                            <div class="nakami">
+                                <h1 class = "ID"><%= reports[0].Report_ID %> </h1>
+                                <h1 class = "Dates"><%= reports[0].Date %></h1><br>
+                                <h1 class="Usernames"><%= reports[0].Username %></h1><br>
+                                <h1 class="Titles"><%= reports[0].Title %> </h1>
+                                <h1 class="Texts"><%= reports[0].Text %> </h1><br>
+                                 
+                                <% if(!reports[0].Liked){ %> 
+ 
+                                    
+                                    <form action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form style="display: none;" action="/drop" method="post"dropss="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1drop class="DropdropBDropns">👍</h1>
+                                    </form>
+                                 
+                                
+                                
+                                <%}else if(reports[0].Liked.includes(reports[reports.length-1])){ %> 
+                                    
+                                    <form style="display: none;" action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                <% }else{%>
+                                    <form action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                <% } %> 
+                                <% if(!reports[0].Liked){ %> 
+                                    <h1 class="Likeds">0</h1>
+                                <% }else{ %> 
+                                    <h1 class="Likeds"><%= reports[0].Liked.length %> </h1><br>
+                                <% } %> 
+                                
+                                <% if(reports[0].Username === reports[reports.length-1]){ %> 
+                                <div class="modify">
+                                    <div class = "edit">edit</div>
+                                    <form action="/delete" method="post" class="deleteSubmit">
+                                        <div class = "delete">delete</div>
+                                        <input type="hidden" value="" name = "delete" class="deleteInputs">
+                                    </form>
+                                </div>
+                                <% } %> 
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -42,11 +108,75 @@
                 <div id="p2" class="paper">
                     <div class="front">
                         <div id="f2" class="front-content">
-                            <% if(reports.length >= 2){ %> 
-                                <h1><%= reports[1].Date %></h1><br>
-                                <h1><%= reports[1].Username %></h1><br>
-                                <h1><%= reports[1].Title %> </h1>
-                                <h1><%= reports[1].Text %> </h1><br>
+                            <% if(reports.length >= 3){ %> 
+                                <div class="nakami">
+                                    <h1 class = "ID"><%= reports[1].Report_ID %> </h1>
+                                    <h1 class = "Dates"><%= reports[1].Date %></h1><br>
+                                    <h1 class="Usernames"><%= reports[1].Username %></h1><br>
+                                    <h1 class="Titles"><%= reports[1].Title %> </h1>
+                                    <h1 class="Texts"><%= reports[1].Text %> </h1><br>
+                                     
+                                    <% if(!reports[1].Liked){ %> 
+ 
+                                        
+                                        <form action="/good" method="post" class="goodform">
+                                            <input type="text" value="" name="fromWho" class="fromWho">
+                                            <input type="text" value="" name="toWhich" class="toWhich">
+                                            <h1 class="LikeButtons">👍</h1>
+                                        </form>
+
+                                        <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                        </form>
+                                     
+                                    
+                                    
+                                    <%}else if(reports[1].Liked.includes(reports[reports.length-1])){ %> 
+                                        
+                                        <form style="display: none;" action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% }else{%>
+                                        <form action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% } %> 
+                                    <% if(reports[1].Liked){ %> 
+                                        <h1 class="Likeds"><%= reports[1].Liked.length %> </h1><br>
+                                    <% }else{ %> 
+                                        <h1 class="Likeds">0</h1>
+                                    <% } %> 
+
+                                    <% if(reports[1].Username === reports[reports.length-1]){ %> 
+                                    <div class="modify">
+                                        <div class = "edit">edit</div>
+                                        <form action="/delete" method="post" class="deleteSubmit">
+                                            <div class = "delete">delete</div>
+                                            <input type="hidden" value="" name = "delete" class="deleteInputs">
+                                        </form>
+                                    </div>
+                                    <% } %> 
+                                    
+                                </div>
+                                
                              <% }else{ %>    
                                 <form action="/book" method="post">
                                     <input type="text" name="Title" placeholder="type title">
@@ -59,11 +189,74 @@
                     </div>
                     <div class="back">
                         <div id="b2" class="back-content">
-                            <% if(reports.length >= 3){ %> 
-                                <h1><%= reports[2].Date %></h1><br>
-                                <h1><%= reports[2].Username %></h1><br>
-                                <h1><%= reports[2].Title %> </h1>
-                                <h1><%= reports[2].Text %> </h1><br>
+                            <% if(reports.length >= 4){ %> 
+                                <div class="nakami">
+                                    <h1 class = "ID"><%= reports[2].Report_ID %> </h1>
+                                    <h1 class = "Dates"><%= reports[2].Date %></h1><br>
+                                    <h1 class="Usernames"><%= reports[2].Username %></h1><br>
+                                    <h1 class="Titles"><%= reports[2].Title %> </h1>
+                                    <h1 class="Texts"><%= reports[2].Text %> </h1><br>
+                                     
+                                    <% if(!reports[2].Liked){ %> 
+ 
+                                        
+                                        <form action="/good" method="post" class="goodform">
+                                            <input type="text" value="" name="fromWho" class="fromWho">
+                                            <input type="text" value="" name="toWhich" class="toWhich">
+                                            <h1 class="LikeButtons">👍</h1>
+                                        </form>
+
+                                        <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                        </form>
+                                     
+                                    
+                                    
+                                    <%}else if(reports[2].Liked.includes(reports[reports.length-1])){ %> 
+                                        
+                                        <form style="display: none;" action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% }else{%>
+                                        <form action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% } %> 
+                                    <% if(reports[2].Liked){ %> 
+                                        <h1 class="Likeds"><%= reports[2].Liked.length %> </h1><br>
+                                    <% }else{ %> 
+                                        <h1 class="Likeds">0</h1>
+                                    <% } %> 
+
+                                    <% if(reports[2].Username === reports[reports.length-1]){ %> 
+                                    <div class="modify">
+                                        <div class = "edit">edit</div>
+                                        <form action="/delete" method="post" class="deleteSubmit">
+                                            <div class = "delete">delete</div>
+                                            <input type="hidden" value="" name = "delete" class="deleteInputs">
+                                        </form>
+                                    </div>
+                                    <% } %> 
+                                </div>
+                                
                              <% }else{ %>    
                                 <form action="/book" method="post">
                                     <input type="text" name="Title" placeholder="type title">
@@ -79,11 +272,74 @@
                 <div id="p3" class="paper">
                     <div class="front">
                         <div id="f3" class="front-content">
-                            <% if(reports.length >= 4){ %> 
-                                <h1><%= reports[3].Date %></h1><br>
-                                <h1><%= reports[3].Username %></h1><br>
-                                <h1><%= reports[3].Title %> </h1>
-                                <h1><%= reports[3].Text %> </h1><br>
+                            <% if(reports.length >= 5){ %> 
+                                <div class="nakami">
+                                    <h1 class = "ID"><%= reports[3].Report_ID %> </h1>
+                                    <h1 class = "Dates"><%= reports[3].Date %></h1><br>
+                                    <h1 class="Usernames"><%= reports[3].Username %></h1><br>
+                                    <h1 class="Titles"><%= reports[3].Title %> </h1>
+                                    <h1 class="Texts"><%= reports[3].Text %> </h1><br>
+                                     
+                                    <% if(!reports[3].Liked){ %> 
+ 
+                                        
+                                        <form action="/good" method="post" class="goodform">
+                                            <input type="text" value="" name="fromWho" class="fromWho">
+                                            <input type="text" value="" name="toWhich" class="toWhich">
+                                            <h1 class="LikeButtons">👍</h1>
+                                        </form>
+
+                                        <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                        </form>
+                                     
+                                    
+                                    
+                                    <%}else if(reports[3].Liked.includes(reports[reports.length-1])){ %> 
+                                        
+                                        <form style="display: none;" action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% }else{%>
+                                        <form action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% } %> 
+                                    <% if(reports[3].Liked){ %> 
+                                        <h1 class="Likeds"><%= reports[3].Liked.length %> </h1><br>
+                                    <% }else{ %> 
+                                        <h1 class="Likeds">0</h1>
+                                    <% } %> 
+
+                                    <% if(reports[3].Username === reports[reports.length-1]){ %> 
+                                    <div class="modify">
+                                        <div class = "edit">edit</div>
+                                        <form action="/delete" method="post" class="deleteSubmit">
+                                            <div class = "delete">delete</div>
+                                            <input type="hidden" value="" name = "delete" class="deleteInputs">
+                                        </form>
+                                    </div>
+                                    <% } %> 
+                                </div>
+                                
                              <% }else{ %>    
                                 <form action="/book" method="post">
                                     <input type="text" name="Title" placeholder="type title">
@@ -96,11 +352,74 @@
                     </div>
                     <div class="back">
                         <div id="b3" class="back-content">
-                            <% if(reports.length >= 5){ %> 
-                                <h1><%= reports[4].Date %></h1><br>
-                                <h1><%= reports[4].Username %></h1><br>
-                                <h1><%= reports[4].Title %> </h1>
-                                <h1><%= reports[4].Text %> </h1><br>
+                            <% if(reports.length >= 6){ %> 
+                                <div class="nakami">
+                                    <h1 class = "ID"><%= reports[4].Report_ID %> </h1>
+                                    <h1 class = "Dates"><%= reports[4].Date %></h1><br>
+                                    <h1 class="Usernames"><%= reports[4].Username %></h1><br>
+                                    <h1 class="Titles"><%= reports[4].Title %> </h1>
+                                    <h1 class="Texts"><%= reports[4].Text %> </h1><br>
+                                     
+                                    <% if(!reports[4].Liked){ %> 
+ 
+                                        
+                                        <form action="/good" method="post" class="goodform">
+                                            <input type="text" value="" name="fromWho" class="fromWho">
+                                            <input type="text" value="" name="toWhich" class="toWhich">
+                                            <h1 class="LikeButtons">👍</h1>
+                                        </form>
+
+                                        <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                        </form>
+                                     
+                                    
+                                    
+                                    <%}else if(reports[4].Liked.includes(reports[reports.length-1])){ %> 
+                                        
+                                        <form style="display: none;" action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% }else{%>
+                                        <form action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% } %> 
+                                    <% if(reports[4].Liked){ %> 
+                                        <h1 class="Likeds"><%= reports[4].Liked.length %> </h1><br>
+                                    <% }else{ %> 
+                                        <h1 class="Likeds">0</h1>
+                                    <% } %> 
+
+                                    <% if(reports[4].Username === reports[reports.length-1]){ %> 
+                                    <div class="modify">
+                                        <div class = "edit">edit</div>
+                                        <form action="/delete" method="post" class="deleteSubmit">
+                                            <div class = "delete">delete</div>
+                                            <input type="hidden" value="" name = "delete" class="deleteInputs">
+                                        </form>
+                                    </div>
+                                    <% } %> 
+                                </div>
+                                
                              <% }else{ %>    
                                 <form action="/book" method="post">
                                     <input type="text" name="Title" placeholder="type title">
@@ -115,11 +434,74 @@
                 <div id="p4" class="paper">
                     <div class="front">
                         <div id="f4" class="front-content">
-                            <% if(reports.length >= 6){ %> 
-                                <h1><%= reports[5].Date %></h1><br>
-                                <h1><%= reports[5].Username %></h1><br>
-                                <h1><%= reports[5].Title %> </h1>
-                                <h1><%= reports[5].Text %> </h1><br>
+                            <% if(reports.length >= 7){ %> 
+                                <div class="nakami">
+                                    <h1 class = "ID"><%= reports[5].Report_ID %> </h1>
+                                    <h1 class = "Dates"><%= reports[5].Date %></h1><br>
+                                    <h1 class="Usernames"><%= reports[5].Username %></h1><br>
+                                    <h1 class="Titles"><%= reports[5].Title %> </h1>
+                                    <h1 class="Texts"><%= reports[5].Text %> </h1><br>
+                                     
+                                    <% if(!reports[5].Liked){ %> 
+ 
+                                        
+                                        <form action="/good" method="post" class="goodform">
+                                            <input type="text" value="" name="fromWho" class="fromWho">
+                                            <input type="text" value="" name="toWhich" class="toWhich">
+                                            <h1 class="LikeButtons">👍</h1>
+                                        </form>
+
+                                        <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                        </form>
+                                     
+                                    
+                                    
+                                    <%}else if(reports[5].Liked.includes(reports[reports.length-1])){ %> 
+                                        
+                                        <form style="display: none;" action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% }else{%>
+                                        <form action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% } %> 
+                                    <% if(reports[5].Liked){ %> 
+                                        <h1 class="Likeds"><%= reports[5].Liked.length %> </h1><br>
+                                    <% }else{ %> 
+                                        <h1 class="Likeds">0</h1>
+                                    <% } %> 
+
+                                    <% if(reports[5].Username === reports[reports.length-1]){ %> 
+                                    <div class="modify">
+                                        <div class = "edit">edit</div>
+                                        <form action="/delete" method="post" class="deleteSubmit">
+                                            <div class = "delete">delete</div>
+                                            <input type="hidden" value="" name = "delete" class="deleteInputs">
+                                        </form>
+                                    </div>
+                                    <% } %> 
+                                </div>
+                                
                              <% }else{ %>    
                                 <form action="/book" method="post">
                                     <input type="text" name="Title" placeholder="type title">
@@ -132,11 +514,74 @@
                     </div>
                     <div class="back">
                         <div id="b4" class="back-content">
-                            <% if(reports.length >= 7){ %> 
-                                <h1><%= reports[6].Date %></h1><br>
-                                <h1><%= reports[6].Username %></h1><br>
-                                <h1><%= reports[6].Title %> </h1>
-                                <h1><%= reports[6].Text %> </h1><br>
+                            <% if(reports.length >= 8){ %> 
+                                <div class="nakami">
+                                    <h1 class = "ID"><%= reports[6].Report_ID %> </h1>
+                                    <h1 class = "Dates"><%= reports[6].Date %></h1><br>
+                                    <h1 class="Usernames"><%= reports[6].Username %></h1><br>
+                                    <h1 class="Titles"><%= reports[6].Title %> </h1>
+                                    <h1 class="Texts"><%= reports[6].Text %> </h1><br>
+                                     
+                                    <% if(!reports[6].Liked){ %> 
+ 
+                                        
+                                        <form action="/good" method="post" class="goodform">
+                                            <input type="text" value="" name="fromWho" class="fromWho">
+                                            <input type="text" value="" name="toWhich" class="toWhich">
+                                            <h1 class="LikeButtons">👍</h1>
+                                        </form>
+
+                                        <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                        </form>
+                                     
+                                    
+                                    
+                                    <%}else if(reports[6].Liked.includes(reports[reports.length-1])){ %> 
+                                        
+                                        <form style="display: none;" action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% }else{%>
+                                        <form action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% } %> 
+                                    <% if(reports[6].Liked){ %> 
+                                        <h1 class="Likeds"><%= reports[6].Liked.length %> </h1><br>
+                                    <% }else{ %> 
+                                        <h1 class="Likeds">0</h1>
+                                    <% } %> 
+
+                                    <% if(reports[6].Username === reports[reports.length-1]){ %> 
+                                    <div class="modify">
+                                        <div class = "edit">edit</div>
+                                        <form action="/delete" method="post" class="deleteSubmit">
+                                            <div class = "delete">delete</div>
+                                            <input type="hidden" value="" name = "delete" class="deleteInputs">
+                                        </form>
+                                    </div>
+                                    <% } %> 
+                                </div>
+                                
                              <% }else{ %>    
                                 <form action="/book" method="post">
                                     <input type="text" name="Title" placeholder="type title">
@@ -151,11 +596,74 @@
                 <div id="p5" class="paper">
                     <div class="front">
                         <div id="f5" class="front-content">
-                            <% if(reports.length >= 8){ %> 
-                                <h1><%= reports[7].Date %></h1><br>
-                                <h1><%= reports[7].Username %></h1><br>
-                                <h1><%= reports[7].Title %> </h1>
-                                <h1><%= reports[7].Text %> </h1><br>
+                            <% if(reports.length >= 9){ %> 
+                                <div class="nakami">
+                                    <h1 class = "ID"><%= reports[7].Report_ID %> </h1>
+                                    <h1 class = "Dates"><%= reports[7].Date %></h1><br>
+                                    <h1 class="Usernames"><%= reports[7].Username %></h1><br>
+                                    <h1 class="Titles"><%= reports[7].Title %> </h1>
+                                    <h1 class="Texts"><%= reports[7].Text %> </h1><br>
+                                     
+                                    <% if(!reports[7].Liked){ %> 
+ 
+                                        
+                                        <form action="/good" method="post" class="goodform">
+                                            <input type="text" value="" name="fromWho" class="fromWho">
+                                            <input type="text" value="" name="toWhich" class="toWhich">
+                                            <h1 class="LikeButtons">👍</h1>
+                                        </form>
+
+                                        <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                        </form>
+                                     
+                                    
+                                    
+                                    <%}else if(reports[7].Liked.includes(reports[reports.length-1])){ %> 
+                                        
+                                        <form style="display: none;" action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% }else{%>
+                                        <form action="/good" method="post" class="goodform">
+                                        <input type="text" value="" name="fromWho" class="fromWho">
+                                        <input type="text" value="" name="toWhich" class="toWhich">
+                                        <h1 class="LikeButtons">👍</h1>
+                                    </form>
+
+                                    <form style="display: none;" action="/drop" method="post" class="dropform">
+                                        <input type="text" value="" name="fromWhodrop" class="fromWhodrop">
+                                        <input type="text" value="" name="toWhichdrop" class="toWhichdrop">
+                                        <h1 class="DropButtons">👍</h1>
+                                    </form>
+                                    <% } %> 
+                                    <% if(reports[7].Liked){ %> 
+                                        <h1 class="Likeds"><%= reports[7].Liked.length %> </h1><br>
+                                    <% }else{ %> 
+                                        <h1 class="Likeds">0</h1>
+                                    <% } %> 
+
+                                    <% if(reports[7].Username === reports[reports.length-1]){ %> 
+                                    <div class="modify">
+                                        <div class = "edit">edit</div>
+                                        <form action="/delete" method="post" class="deleteSubmit">
+                                            <div class = "delete">delete</div>
+                                            <input type="hidden" value="" name = "delete" class="deleteInputs">
+                                        </form>
+                                    </div>
+                                    <% } %> 
+                                </div>
+                                
                              <% }else{ %>    
                                 <form action="/book" method="post">
                                     <input type="text" name="Title" placeholder="type title">
@@ -168,13 +676,16 @@
                     </div>
                     <div class="back">
                         <div id="b5" class="back-content">
-                            <% if(reports.length >= 9){ %> 
-                                <h1><%= reports[8].Date %></h1><br>
-                                <h1><%= reports[8].Username %></h1><br>
-                                <h1><%= reports[8].Title %> </h1>
-                                <h1><%= reports[8].Text %> </h1><br>
-                             <% }else{ %>    
-                                <form action="/book" method="post">
+                            <% if(reports.length >= 10){ %> 
+                                <div class="nakami">
+                                    <h1 class = "ID"><%= reports[8].Report_ID %> </h1>
+                                    <h1 class = "Dates"><%= reports[8].Date %></h1><br>
+                                    <h1 class="Usernames"><%= reports[8].Username %></h1><br>
+                                    <h1 class="Titles"><%= reports[8].Title %> </h1>
+                                    <h1 class="Texts"><%= reports[8].Text %> </h1><br>
+                                </div>
+                                    <% }else{ %>    
+                                        <form action="/book" method="post">
                                     <input type="text" name="Title" placeholder="type title">
                                     <input type="text" name="Text" placeholder="type report">
 
@@ -187,13 +698,16 @@
                 <div id="p6" class="paper">
                     <div class="front">
                         <div id="f6" class="front-content">
-                            <% if(reports.length >= 10){ %> 
-                                <h1><%= reports[9].Date %></h1><br>
-                                <h1><%= reports[9].Username %></h1><br>
-                                <h1><%= reports[9].Title %> </h1>
-                                <h1><%= reports[9].Text %> </h1><br>
-                             <% }else{ %>    
-                                <form action="/book" method="post">
+                            <% if(reports.length >= 11){ %> 
+                                <div class="nakami">
+                                    <h1 class = "ID"><%= reports[9].Report_ID %> </h1>
+                                    <h1 class = "Dates"><%= reports[9].Date %></h1><br>
+                                    <h1 class="Usernames"><%= reports[9].Username %></h1><br>
+                                    <h1 class="Titles"><%= reports[9].Title %> </h1>
+                                    <h1 class="Texts"><%= reports[9].Text %> </h1><br>
+                                </div>
+                                    <% }else{ %>    
+                                        <form action="/book" method="post">
                                     <input type="text" name="Title" placeholder="type title">
                                     <input type="text" name="Text" placeholder="type report">
 
@@ -204,13 +718,16 @@
                     </div>
                     <div class="back">
                         <div id="b6" class="back-content">
-                            <% if(reports.length >= 11){ %> 
-                                <h1><%= reports[10].Date %></h1><br>
-                                <h1><%= reports[10].Username %></h1><br>
-                                <h1><%= reports[10].Title %> </h1>
-                                <h1><%= reports[10].Text %> </h1><br>
-                             <% }else{ %>    
-                                <form action="/book" method="post">
+                            <% if(reports.length >= 12){ %> 
+                                <div class="nakami">
+                                    <h1 class = "ID"><%= reports[10].Report_ID %> </h1>
+                                    <h1 class = "Dates"><%= reports[10].Date %></h1><br>
+                                    <h1 class="Usernames"><%= reports[10].Username %></h1><br>
+                                    <h1 class="Titles"><%= reports[10].Title %> </h1>
+                                    <h1 class="Texts"><%= reports[10].Text %> </h1><br>
+                                </div>
+                                    <% }else{ %>    
+                                        <form action="/book" method="post">
                                     <input type="text" name="Title" placeholder="type title">
                                     <input type="text" name="Text" placeholder="type report">
 
@@ -309,7 +826,7 @@
 
     <script>
 
-
+console.log(document.cookie);
         // References to DOM Elements
 // const prevBtn = document.querySelector("#prev-btn");
 // const nextBtn = document.querySelector("#next-btn");
@@ -487,6 +1004,75 @@ function goPrevPage() {
 const arrow = document.querySelector(".arrow")
 arrow.addEventListener("click", ()=>{
     window.location.href = "/game";
+})
+
+
+
+const edit = document.querySelectorAll(".edit")
+const deletee = document.querySelectorAll(".delete")
+const deleteSubmit = document.querySelectorAll(".deleteSubmit")
+const IDs = document.querySelectorAll(".ID")
+const deleteInputs = document.querySelectorAll(".deleteInputs");
+
+deletee.forEach((each, i)=>{
+    each.addEventListener("click", ()=>{
+        // console.log(reports[0])
+        const selectedID = IDs[i].innerHTML
+        console.log(deleteSubmit[i])
+        deleteInputs[i].value = selectedID;
+        deleteSubmit[i].submit();
+    })
+})
+
+const nakamis = document.querySelectorAll(".nakami");
+edit.forEach((each, i)=>{
+    each.addEventListener("click", ()=>{
+        nakamis[i].innerHTML = `
+            <div class="nakami">
+                <form class = "update-form" action="/update" method="post">
+                    <input  type="text" placeholder="write your title" name="Title" class="updateTitle" placeholder = "title">
+                    <input type="text" placeholder="write your report" name = "Text" class="updateText" placeholder = "write your report">
+                    <input type = "hidden" class = "updateindex" name="ID" value = "">
+                    <button class = "update-submmit">write</button>
+                </form>
+            </div>
+        `;
+
+        const updateindex = document.querySelectorAll(".updateindex");
+        updateindex[i].value = IDs[i].innerHTML;
+        
+    })
+})
+
+const goodButtons = document.querySelectorAll(".LikeButtons")
+const goodForms = document.querySelectorAll(".goodform")
+const fromWhos = document.querySelectorAll(".fromWho");
+const toWhichs = document.querySelectorAll(".toWhich");
+IDs.forEach((each, i)=>{
+    each.addEventListener("click", ()=>{
+        console.log(IDs[i].innerHTML)
+    })
+})
+goodButtons.forEach((button, i)=>{
+    button.addEventListener("click", ()=>{
+        fromWhos[i].value = decodeURIComponent(document.cookie).split(";")[1].split("=")[1];
+        toWhichs[i].value = IDs[i].innerHTML;
+        goodForms[i].submit();
+        // console.log(document.cookie)
+    })
+})
+
+
+const dropButtons = document.querySelectorAll(".DropButtons")
+const dropforms = document.querySelectorAll(".dropform");
+const fromwhodrops = document.querySelectorAll(".fromWhodrop");
+const toWhichdrop = document.querySelectorAll(".toWhichdrop");
+dropButtons.forEach((button, i)=>{
+    button.addEventListener(("click"), ()=>{
+        fromwhodrops[i].value = decodeURIComponent(document.cookie).split(";")[1].split("=")[1];
+        toWhichdrop[i].value = IDs[i].innerHTML;
+        dropforms[i].submit();
+    })
 })
     </script>
 </body>
@@ -782,6 +1368,104 @@ i {
 
 }
 
+.nakami{
+    /* background-color: white; */
+    width: 90%;
+    height: 90%;
+    position: relative;
+
+}
+
+.Dates{
+position: absolute;
+top: 50px;
+left: 50px;
+}
+
+.Usernames{
+    position: absolute;
+    top: 50px;
+    left: 200px;
+
+}
+
+.Titles{
+    position: absolute;
+    top: 140px;
+    left: 110px;
+    font-size: 35px;
+}
+
+.Texts{
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    text-decoration: underline;
+}
+
+.LikeButtons{
+position: absolute;
+    bottom: 10px;
+    right: 50px;
+    color: black;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    border: none;
+    outline: none;
+    background-color: blanchedalmond;
+    border-radius: 50px;
+    transition: 0.5s;
+}
+
+.LikeButtons:hover{
+    background-color: #e78e0e;
+}
+
+.Likeds{
+position: absolute;
+bottom: 10px;
+right: 20px;
+}
+
+.dropform{
+    position: absolute;
+    bottom: 10px;
+    right: 40px;
+}
+
+.fromWhodrop{
+    display: none;
+}
+
+.toWhichdrop{
+    display: none;
+}
+
+.fromWho{
+    display: none;
+}
+.toWhich{
+    display: none;
+}
+
+.DropButtons{
+    
+    background-color: #b56107;
+    transform: rotateZ(-50deg);
+    border-radius: 50px;
+    transition: 0.5s;
+}
+
+.modify{
+    position:absolute;
+    display: flex;
+    justify-content: space-around;
+    font-size: 15px;
+    width: 150px;
+    bottom: 10px;
+    left: 20px;
+}
+
 .table{
     position: absolute;
     width: 2000px;
@@ -825,6 +1509,30 @@ header, footer {
   display: block;
 }
 
+.deleteSubmit:hover{
+    cursor: pointer;
+    font-size: 30px;
+    transition: 0.5s;
+}
+
+.deleteSubmit:hover + .edit{
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+
+
+.edit:hover{
+    cursor: pointer;
+    font-size: 30px;
+    transition: 0.5s;
+}
+
+.edit:hover + .deleteSubmit{
+    /* margin-left: 20px; */
+    /* margin-top: 10px; */
+}
+
 a, a:link, a:visited {
   text-decoration: none;
 }
@@ -841,6 +1549,51 @@ ul {
   width: 1170px;
   margin: 20px auto 0;
 }
+
+.updateTitle{
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    height: 50px;
+    text-align: center;
+    background-color: blanchedalmond;
+    border-radius: 20px;
+    border: solid 5px rgb(195, 133, 52);
+}
+
+.updateText{
+    position: absolute;
+    left: 100px;
+    top: 200px;
+    width: 170px;
+    height: 200px;
+    background-color: blanchedalmond;
+    border-radius: 20px;
+    border: solid 5px rgb(195, 133, 52);
+    text-align: center;
+}
+
+.update-form{
+
+}
+
+.update-submmit{
+    position: absolute;
+    bottom: -40px;
+    left: 125px;
+    border: none;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        appearance: none;
+        background-color: rgb(195, 133, 52);
+    border-radius: 20px;
+    font-size: 20px;
+    width: 120px;
+    height: 50px;
+
+}
+
 .torch{
     position: absolute;
     right: 150px;

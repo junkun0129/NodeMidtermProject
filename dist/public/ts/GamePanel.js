@@ -17,6 +17,7 @@ export class GamePanel {
         this.itemViewSecne = 3;
         this.startOverMakeSureScene = 4;
         this.talkingScene = 5;
+        this.objectTalkingScene = 6;
         this.gameStartOver = false;
         //map state
         this.field1 = 0;
@@ -26,6 +27,8 @@ export class GamePanel {
         this.maps = [];
         this.collisionDatas = [];
         this.mapsChange = true;
+        this.whoSpeakIndex = 0;
+        this.whichSpeakIndex = 0;
         this.player = new Player(this);
         this.entity = new Entity(this);
         this.npc = [];
@@ -38,7 +41,10 @@ export class GamePanel {
         this.asset = new Asset(this);
         this.strageM = new LSManager();
         this.sound = [];
-        this.User = "";
+        this.User = { User_ID: 0, Password: "", Username: "", LoginStatus: 0 };
+        this.Username = "";
+        this.Email = "";
+        this.ID = 0;
         this.books = [];
         this.booksCollision = false;
         this.collision = false;
@@ -76,8 +82,8 @@ export class GamePanel {
             // this.User = decodedCurrentUser;
             // console.log(decodedCurrentUser, ":this is current user")
             //let UserJson = decodeURIComponent(document.cookie).split(" ")[1].split("=")[1].split("j:")[1];
-            let User = JSON.parse(decodeURIComponent(document.cookie).split("j:")[1]);
-            console.log(User.Username);
+            this.User = JSON.parse(decodeURIComponent(document.cookie).split("j:")[1]);
+            console.log(this.User.Username);
         }
         else {
             console.log("jjjjjjj");
@@ -146,8 +152,11 @@ export class GamePanel {
                 this.doors[i].draw(this.c);
             }
         }
-        if (this.books[0] !== undefined) {
-            this.books[0].draw(this.c);
+        //book
+        for (let i = 0; i < this.doors.length; i++) {
+            if (this.books[i] !== undefined) {
+                this.books[i].draw(this.c);
+            }
         }
         this.asset.draw(this.c);
         this.ui.draw(this.c);

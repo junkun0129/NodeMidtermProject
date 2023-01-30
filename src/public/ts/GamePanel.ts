@@ -31,6 +31,7 @@ export class GamePanel{
     public itemViewSecne:number = 3;
     public startOverMakeSureScene:number = 4;
     public talkingScene:number = 5;
+    public objectTalkingScene:number = 6;
     
     public gameStartOver:boolean = false;
 
@@ -42,7 +43,9 @@ export class GamePanel{
     public maps:string[] = [];
     public collisionDatas:number[][] = [];
     public mapsChange:boolean = true;
-    
+
+    public whoSpeakIndex:number = 0;
+    public whichSpeakIndex:number = 0;
     
     public player:Player = new Player(this);
     public entity:Entity = new Entity(this);
@@ -59,7 +62,10 @@ export class GamePanel{
     
 
 
-    public User:string = "";
+    public User:{User_ID:number, Password:string, Username:string, LoginStatus:number} = {User_ID:0, Password:"", Username:"", LoginStatus:0};
+    public Username:string = "";
+    public Email:string = "";
+    public ID:number = 0;
     public books:Book[] = []; 
     public booksCollision:boolean = false;
 
@@ -114,8 +120,10 @@ export class GamePanel{
         // this.User = decodedCurrentUser;
         // console.log(decodedCurrentUser, ":this is current user")
         //let UserJson = decodeURIComponent(document.cookie).split(" ")[1].split("=")[1].split("j:")[1];
-        let User = JSON.parse(decodeURIComponent(document.cookie).split("j:")[1]);
-        console.log(User.Username)
+        this.User = JSON.parse(decodeURIComponent(document.cookie).split("j:")[1]);
+
+        
+        console.log(this.User.Username);
         
        }else{
         console.log("jjjjjjj")
@@ -228,9 +236,14 @@ export class GamePanel{
                 this.doors[i].draw(this.c);
             }
         }
-        if(this.books[0] !== undefined){
+        
+        //book
+        for(let i:number = 0; i<this.doors.length; i++){
 
-            this.books[0].draw(this.c);
+            if(this.books[i] !== undefined){
+                
+                this.books[i].draw(this.c);
+            }
         }
 
         this.asset.draw(this.c);

@@ -68,7 +68,8 @@ export class Player{
             }
 
             //books
-            this.gp.collisionC.CheckCollisionBooks(this.direction)
+            let BookIndex = this.gp.collisionC.CheckCollisionBooks(this.direction)
+            this.intaractBooks(BookIndex);
 
             //previous room
             this.previousRoom = this.gp.mapState;
@@ -112,9 +113,20 @@ export class Player{
         if(i !== 999){
 
             console.log(this.gp.npc[i]);
-          
+            this.gp.whoSpeakIndex = i;
             this.gp.gameState = this.gp.talkingScene;
             this.gp.npc[i].speak();
+        }
+    }
+
+    public intaractBooks(i:number):void{
+        if(i !== 999){
+            if(this.gp.books[i].jumpable)window.location.href = "/book";
+            if(this.gp.books[i].speakable){
+                this.gp.whichSpeakIndex = i;
+                this.gp.gameState = this.gp.objectTalkingScene;
+                this.gp.books[i].speak();
+            }
         }
     }
 

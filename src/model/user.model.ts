@@ -25,6 +25,7 @@ module.exports =  class User{
         return db.query(sql, [this.Email]);
     }
 
+
     
     static findLogin(email:string){
 

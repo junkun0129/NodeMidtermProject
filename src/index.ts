@@ -6,7 +6,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 // import { getGameScreen } from "./controller/game.controller";
 
-const {getGameScreen, getTitleScreen, getCreateScreen, postCreateScreen, getLoginScreen, postLoginScreen, getBookScreen, postBookScreen} = require("./controller/game.controller")
+const {getGameScreen, getTitleScreen, getCreateScreen, postCreateScreen, getLoginScreen, postLoginScreen, getBookScreen, postBookScreen, deleteBookScreen,updateBookScreen, goodBookScreen, dropBookScreen} = require("./controller/game.controller")
 const dbConnection = require("./util/mysql");
 const app = express();
 app.use(express.static(path.join(__dirname, "public")))
@@ -40,6 +40,14 @@ app.post("/login", postLoginScreen);
 app.get("/book", getBookScreen);
 
 app.post("/book", postBookScreen);
+
+app.post("/delete", deleteBookScreen);
+
+app.post("/update", updateBookScreen);
+
+app.post("/good", goodBookScreen);
+
+app.post("/drop", dropBookScreen);
 
 const port = 9000;
 app.listen(port, async()=>{

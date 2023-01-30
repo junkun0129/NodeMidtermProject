@@ -29,10 +29,13 @@ export class Doors{
             let image = new Image;
             image.src = this.imageName;
             
+            c.fillStyle = "rgba(0,0,0,0.1)";
+
             let objectX:number = this.x - this.gp.player.playerX+750;
             let objectY:number = this.y - this.gp.player.playerY+350;
             
-            c.drawImage(image, objectX, objectY, this.gp.tilesize, this.gp.tilesize);
+            // c.drawImage(image, objectX, objectY, this.gp.tilesize, this.gp.tilesize);
+            c.fillRect(objectX, objectY, this.gp.tilesize, this.gp.tilesize)
         }
     }
 

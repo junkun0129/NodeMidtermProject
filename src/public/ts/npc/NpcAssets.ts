@@ -19,3 +19,11 @@ export const ReportBook = [
     "do you take a look ReportBook?"
 ]
 
+export const AccomodationGirl = [
+    "Hi, Welcome to Jumanji.Inn!",
+    "Would you like to stay over tonight here?",
+    "You might wanna read `Report Book`",
+    "You can see the reports other adventurers",
+    "please make yourself relax. Thank you."
+]
+

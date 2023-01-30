@@ -204,8 +204,16 @@ export class Keyhandler{
                     if(e.key === "e"){
                         console.log("kim yunson");
                         this.gp.sound[2].playMusic();
-                        this.gp.npc[0].dialogIndex++;
-                        this.gp.npc[0].speak();
+                        this.gp.npc[this.gp.whoSpeakIndex].dialogIndex++;
+                        this.gp.npc[this.gp.whoSpeakIndex].speak();
+                    }
+                }
+
+                if(this.gp.gameState === this.gp.objectTalkingScene){
+                    if(e.key === "e"){
+                        this.gp.sound[2].playMusic();
+                        this.gp.books[this.gp.whichSpeakIndex].dialogIndex++;
+                        this.gp.books[this.gp.whichSpeakIndex].speak();
                     }
                 }
 

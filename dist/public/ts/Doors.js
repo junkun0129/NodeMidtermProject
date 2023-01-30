@@ -13,9 +13,11 @@ export class Doors {
         if (this.gp.mapState === this.from) {
             let image = new Image;
             image.src = this.imageName;
+            c.fillStyle = "rgba(0,0,0,0.1)";
             let objectX = this.x - this.gp.player.playerX + 750;
             let objectY = this.y - this.gp.player.playerY + 350;
-            c.drawImage(image, objectX, objectY, this.gp.tilesize, this.gp.tilesize);
+            // c.drawImage(image, objectX, objectY, this.gp.tilesize, this.gp.tilesize);
+            c.fillRect(objectX, objectY, this.gp.tilesize, this.gp.tilesize);
         }
     }
 }
